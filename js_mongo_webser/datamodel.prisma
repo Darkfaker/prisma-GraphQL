@@ -1,14 +1,29 @@
+type Query {
+      publishedPosts: [Post!]!
+      post(postId: ID!): Post
+      postsByUser(userId: ID!): [Post!]!
+
+}
+
+type Mutation {
+      createUser(name: String!): User
+      createDraft(title: String!, userId: ID!): Post
+      publish(postId: ID!): Post
+
+}
+
 type User {
-      id: ID! @unique
-      email: String @unique
+      id: ID!
+      email: String
       name: String!
       posts: [Post!]!
 
 }
 
 type Post {
-      id: ID! @unique
+      id: ID!
       title: String!
-      published: Boolean! @default(value: "false")
+      published: Boolean!
       author: User
+
 }
